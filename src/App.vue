@@ -1,30 +1,20 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <hello-world></hello-world>
+  <p class="box">{{ count }}</p>
+  {{ obj.name }}
 </template>
+<script setup>
+import HelloWorld from '@/components/HelloWorld.vue';
+const store = useStore()
+const count = computed(()=>store.state.count)
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+const obj = reactive({
+  name:'abc'
+})
+</script>
+<style lang="scss">
+.box{
+  width:100px;
+  color:$themeColor;
 }
 </style>
